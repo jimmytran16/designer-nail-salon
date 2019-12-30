@@ -1,4 +1,4 @@
-# Designer Nail Salon 
+# Designer Nail Salon ~
 
 <img src="dns_imgs/home_page.png" height="100px" width="200px">
 
