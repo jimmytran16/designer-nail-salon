@@ -65,8 +65,8 @@
                   
             
                   <li><a href="#">Book Online</a></li>
-                  <li><a href="services.html">Services</a></li>
-                  <li><a href="services.html">Reviews</a></li>
+                  <li><a href="services">Services</a></li>
+                  <li><a href="services">Reviews</a></li>
                 </ul>
               </nav>
             </div>
