@@ -33,7 +33,7 @@ public class SendEmailServlet extends HttpServlet{
 		//call doPost method if form method is 'get'
 		doPost(request,response);
 	}
-//	
+	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		fname = request.getParameter("fname");
@@ -50,11 +50,7 @@ public class SendEmailServlet extends HttpServlet{
 		    props.put("mail.smtp.starttls.enable", "true");
 		    props.put("mail.smtp.auth", "true");
 		    props.put("mail.smtp.host", "smtp.gmail.com");
-		    props.put("mail.smtp.port", "587");
-//			//props.put("mail.smtp.ssl.enable","false");
-//			//props.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-//			//props.put("mail.smtp.socketFactory.fallback","true");
-//			
+		    props.put("mail.smtp.port", "587");			
 			Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication(){
