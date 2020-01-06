@@ -30,9 +30,8 @@
 	<dependency>
         <groupId>javax.mail</groupId>
 		<artifactId>javax.mail-api</artifactId>        
-		<version>1.6.2</version>
+		<version>1.5.2</version>
     </dependency>
-
     <dependency>
         <groupId>javax.activation</groupId>
         <artifactId>activation</artifactId>
@@ -48,6 +47,15 @@
 	    <defaultGoal>install</defaultGoal>
 		<finalName>ROOT</finalName>
 		 <plugins>
+		 <plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-compiler-plugin</artifactId>
+    		<version>3.1</version>
+    		<configuration>
+        		<source>1.7</source>
+       		    <target>1.7</target>
+    		</configuration>
+		</plugin>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>

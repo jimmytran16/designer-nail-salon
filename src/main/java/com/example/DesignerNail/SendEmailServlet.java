@@ -47,10 +47,12 @@ public class SendEmailServlet extends HttpServlet{
 		final String username= "designersnailsalon@gmail.com";
 			final String password = "TestingAcc123.";
 			Properties props = new Properties();
-		    props.put("mail.smtp.starttls.enable", "true");
-		    props.put("mail.smtp.auth", "true");
-		    props.put("mail.smtp.host", "smtp.gmail.com");
-		    props.put("mail.smtp.port", "587");			
+	        props.put("mail.smtp.ssl.enable", true);	
+		    props.put("mail.smtp.auth", true);			    
+		    props.put("mail.smtp.host", "smtp.gmail.com");		        
+		    props.put("mail.smtp.port", 465);
+		    
+	
 			Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication(){
@@ -60,7 +62,7 @@ public class SendEmailServlet extends HttpServlet{
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
-//			send from
+			//send from
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("jimmytran1620@gmail.com"));
 			MimeBodyPart textPart = new MimeBodyPart();
 			Multipart multipart = new MimeMultipart();
@@ -74,7 +76,7 @@ public class SendEmailServlet extends HttpServlet{
 			
 			//Send email 
 			Transport.send(message);
-			System.out.println("Success!");
+			System.out.println("Success! - 465- sun.mail2");
 			sess.setAttribute("message","  Message sent succuessfully!");
 			sess.setAttribute("message_color","#c7b216");
 			response.sendRedirect("booking.jsp");
