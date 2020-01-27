@@ -1,6 +1,9 @@
 package com.example.DesignerNail;
 
 import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
@@ -18,6 +21,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.util.ResourceBundle;
 
 //set the servlet name and the page url pattern
 @WebServlet("/SendEmailServlet")
@@ -35,7 +39,7 @@ public class SendEmailServlet extends HttpServlet{
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
 		fname = request.getParameter("fname");
 		phone = request.getParameter("lname");
 		date = request.getParameter("date");
@@ -44,15 +48,13 @@ public class SendEmailServlet extends HttpServlet{
 		msg = request.getParameter("note");
 		//get session
 		sess = request.getSession();
+		Properties props = new Properties();
+	    props.put("mail.smtp.ssl.enable", true);	
+		props.put("mail.smtp.auth", true);			    
+		props.put("mail.smtp.host", "smtp.gmail.com");		        
+		props.put("mail.smtp.port", 587);   
 		final String username= "designersnailsalon@gmail.com";
-			final String password = "TestingAcc123.";
-			Properties props = new Properties();
-	        props.put("mail.smtp.ssl.enable", true);	
-		    props.put("mail.smtp.auth", true);			    
-		    props.put("mail.smtp.host", "smtp.gmail.com");		        
-		    props.put("mail.smtp.port", 465);
-		    
-	
+		final String password = "TestingAcc123.";
 			Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication(){
@@ -60,32 +62,32 @@ public class SendEmailServlet extends HttpServlet{
 			}			
 				});
 		try {
-			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(username));
-			//send from
-			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("jimmytran1620@gmail.com"));
-			MimeBodyPart textPart = new MimeBodyPart();
-			Multipart multipart = new MimeMultipart();
-			String final_Text ="Name: "+fname+"\nPhone Number: "+phone+"\nEmail: "+email+"\nTreatment:"
-					+treatment+"\nMessage: "+msg;
-			textPart.setText(final_Text);
-			message.setSubject("Customer Message: ");
-			multipart.addBodyPart(textPart);
-			message.setContent(multipart);
-			message.setSubject("Appointment Date: "+date);
-			
-			//Send email 
-			Transport.send(message);
-			System.out.println("Success! - 465- sun.mail2");
-			sess.setAttribute("message","  Message sent succuessfully!");
-			sess.setAttribute("message_color","#c7b216");
-			response.sendRedirect("booking.jsp");
-			}catch(Exception e) {
-			sess.setAttribute("message_color","red");
-			sess.setAttribute("message","  Sorry, our website is currently under maintenance, Please contact (339)-221-5234 to schedule for an appointment!");
-			System.out.println("Error "+e);
-			response.sendRedirect("booking.jsp");
-			}
+		Message message = new MimeMessage(session);
+		message.setFrom(new InternetAddress(username));
+		//send from
+		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("jimmytran1620@gmail.com"));
+		MimeBodyPart textPart = new MimeBodyPart();
+		Multipart multipart = new MimeMultipart();
+		String final_Text ="Name: "+fname+"\nPhone Number: "+phone+"\nEmail: "+email+"\nTreatment:"
+				+treatment+"\nMessage: "+msg;
+		textPart.setText(final_Text);
+		message.setSubject("Customer Message: ");
+		multipart.addBodyPart(textPart);
+		message.setContent(multipart);
+		message.setSubject("Appointment Date: "+date);
+		
+		//Send email 
+		Transport.send(message);
+		System.out.println("Success! - 587- sun.mail2");
+		sess.setAttribute("message","  Message sent succuessfully!");
+		sess.setAttribute("message_color","#c7b216");
+		response.sendRedirect("booking.jsp");
+		}catch(Exception e) {
+		sess.setAttribute("message_color","red");
+		sess.setAttribute("message","  Sorry, our website is currently under maintenance, Please contact (339)-221-5234 to schedule for an appointment!");
+		System.out.println("Error "+e);
+		response.sendRedirect("booking.jsp");
+		}
 			
 	}
 
