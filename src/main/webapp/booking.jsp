@@ -126,7 +126,7 @@
 
             
 
-            <form method="POST" action="SendEmailServlet" class="p-5 bg-white">
+            <form method="POST" action="email" class="p-5 bg-white">
               <h2 class="mb-4 site-section-heading">Book Now</h2>
 
               <div class="row form-group">

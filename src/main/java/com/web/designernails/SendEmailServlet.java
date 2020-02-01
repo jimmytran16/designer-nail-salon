@@ -1,13 +1,9 @@
-package com.example.DesignerNail;
+package com.web.designernails;
 
 import java.io.IOException;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.util.Locale;
 import java.util.Properties;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +17,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.util.ResourceBundle;
 
-//set the servlet name and the page url pattern
-@WebServlet("/SendEmailServlet")
 public class SendEmailServlet extends HttpServlet{
 	/**
 	 * 
@@ -37,7 +30,6 @@ public class SendEmailServlet extends HttpServlet{
 		//call doPost method if form method is 'get'
 		doPost(request,response);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
 		fname = request.getParameter("fname");
@@ -48,13 +40,13 @@ public class SendEmailServlet extends HttpServlet{
 		msg = request.getParameter("note");
 		//get session
 		sess = request.getSession();
-		Properties props = new Properties();
-	    props.put("mail.smtp.ssl.enable", true);	
-		props.put("mail.smtp.auth", true);			    
+		Properties props = new Properties(); 		
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable","true");
 		props.put("mail.smtp.host", "smtp.gmail.com");		        
-		props.put("mail.smtp.port", 587);   
+		props.put("mail.smtp.port", "587");   
 		final String username= "designersnailsalon@gmail.com";
-		final String password = "TestingAcc123.";
+		final String password = "de$ignernew!";
 			Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication(){
@@ -78,7 +70,7 @@ public class SendEmailServlet extends HttpServlet{
 		
 		//Send email 
 		Transport.send(message);
-		System.out.println("Success! - 587- sun.mail2");
+		System.out.println("Success! - port 587");
 		sess.setAttribute("message","  Message sent succuessfully!");
 		sess.setAttribute("message_color","#c7b216");
 		response.sendRedirect("booking.jsp");
