@@ -45,8 +45,8 @@ public class SendEmailServlet extends HttpServlet{
         props.put("mail.smtp.starttls.enable","true");
 		props.put("mail.smtp.host", "smtp.gmail.com");		        
 		props.put("mail.smtp.port", "587");   
-		final String username= "designersnailsalon@gmail.com";
-		final String password = "de$ignernew!";
+		final String username= System.getenv("SENDER_USER"); //get system enviroment variables
+		final String password = System.getenv("SENDER_PASS");
 			Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication(){
@@ -54,32 +54,33 @@ public class SendEmailServlet extends HttpServlet{
 			}			
 				});
 		try {
-		Message message = new MimeMessage(session);
-		message.setFrom(new InternetAddress(username));
-		//send from
-		message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("jimmytran1620@gmail.com"));
-		MimeBodyPart textPart = new MimeBodyPart();
-		Multipart multipart = new MimeMultipart();
-		String final_Text ="Name: "+fname+"\nPhone Number: "+phone+"\nEmail: "+email+"\nTreatment:"
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(username));
+			//send from
+			final String recipient = System.getenv("RECIPIENT_USER");
+			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recipient));
+			MimeBodyPart textPart = new MimeBodyPart();
+			Multipart multipart = new MimeMultipart();
+			String final_Text ="Name: "+fname+"\nPhone Number: "+phone+"\nEmail: "+email+"\nTreatment:"
 				+treatment+"\nMessage: "+msg;
-		textPart.setText(final_Text);
-		message.setSubject("Customer Message: ");
-		multipart.addBodyPart(textPart);
-		message.setContent(multipart);
-		message.setSubject("Appointment Date: "+date);
+			textPart.setText(final_Text);
+			message.setSubject("Customer Message: ");
+			multipart.addBodyPart(textPart);
+			message.setContent(multipart);
+			message.setSubject("Appointment Date: "+date);
 		
-		//Send email 
-		Transport.send(message);
-		System.out.println("Success! - port 587");
-		sess.setAttribute("message","  Message sent succuessfully!");
-		sess.setAttribute("message_color","#c7b216");
-		response.sendRedirect("booking.jsp");
-		}catch(Exception e) {
-		sess.setAttribute("message_color","red");
-		sess.setAttribute("message","  Sorry, our website is currently under maintenance, Please contact (339)-221-5234 to schedule for an appointment!");
-		System.out.println("Error "+e);
-		response.sendRedirect("booking.jsp");
-		}
+			//Send email 
+			Transport.send(message);
+			System.out.println("Success! - port 587");
+			sess.setAttribute("message","  Message sent succuessfully!"); //success message sent to the webpage
+			sess.setAttribute("message_color","#c7b216");
+			response.sendRedirect("booking.jsp");
+			}catch(Exception e) {
+				sess.setAttribute("message_color","red");
+				sess.setAttribute("message","  Sorry, our website is currently under maintenance, Please contact (339)-221-5234 to schedule for an appointment!");
+				System.out.println("Error "+e);
+				response.sendRedirect("booking.jsp");
+			}
 			
 	}
 
