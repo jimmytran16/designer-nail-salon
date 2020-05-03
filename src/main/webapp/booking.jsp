@@ -132,18 +132,18 @@
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="fname">Name </label>
-                  <input type="text" name="fname" id="fname" class="form-control" required="required" placeholder="Your Name" >
+                  <input type="text" name="fname" id="fname" class="form-control" placeholder="Your Name" required>
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="lname">Phone</label>
-                  <input type="tel" name="lname" id="lname" class="form-control" required="required" pattern="{1,20}" placeholder="xxx-xxx-xxxx" required>
+                  <input type="tel" name="lname" id="lname" class="form-control" pattern="{1,20}" placeholder="ex. 012-345-6789" required>
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="date">Date</label> 
-                  <input type="text" name="date" id="date" class="form-control datepicker px-2" placeholder="Date of visit">
+                  <input type="text" name="date" id="date" class="form-control datepicker px-2" placeholder="Date of visit" required>
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="email">Email</label> 
@@ -164,7 +164,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="note">Notes</label> 
-                  <textarea name="note" id="note" cols="30" rows="5" class="form-control" required placeholder="Service specificications.."></textarea>
+                  <textarea name="note" id="note" cols="30" rows="5" class="form-control" required placeholder="Service specificications.." required></textarea>
                 </div>
               </div>
 
@@ -175,7 +175,7 @@
                 <%if(session.getAttribute("message")!=null){
                 	session.getAttribute("message_color");
                 	%>
-                <b><span style="color:${message_color};padding-left:10px">${message}</span></b>
+                <b><span style="color:${message_color};padding-left:15px;font-weight:500;">${message}</span></b>
                
                 <% session.setAttribute("message",null);
                 session.setAttribute("message_color",null); }%>
@@ -188,7 +188,7 @@
             
             <div class="p-4 mb-3 bg-white">
               <p class="mb-0 font-weight-bold">Address</p>
-              <p class="mb-4"3>365A Main Street, Medford, Massachusetts, USA</p>
+              <p class="mb-4">365A Main Street, Medford, Massachusetts, USA</p>
 
               <p class="mb-0 font-weight-bold">Phone</p>
               <p class="mb-4"><a href="#">+1 (339) 221-5234</a></p>

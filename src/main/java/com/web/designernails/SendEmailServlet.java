@@ -74,7 +74,7 @@ public class SendEmailServlet extends HttpServlet{
 			//Send email 
 			Transport.send(message);
 			System.out.println("Success! - port 587");
-			sess.setAttribute("message","  Message sent succuessfully!"); //success message sent to the webpage
+			sess.setAttribute("message","  Appointment sent succuessfully!"); //success message sent to the webpage
 			sess.setAttribute("message_color","#c7b216");
 			response.sendRedirect("booking.jsp");
 			}catch(Exception e) {
