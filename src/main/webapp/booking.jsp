@@ -132,11 +132,11 @@
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="fname">Name </label>
-                  <input type="text" name="fname" id="fname" class="form-control" required="required" placeholder="Your Name">
+                  <input type="text" name="fname" id="fname" class="form-control" required="required" placeholder="Your Name" >
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="lname">Phone</label>
-                  <input type="text" name="lname" id="lname" class="form-control" required="required" pattern="{1,20}" placeholder="Phone Number">
+                  <input type="tel" name="lname" id="lname" class="form-control" required="required" pattern="{1,20}" placeholder="xxx-xxx-xxxx" required>
                 </div>
               </div>
 
@@ -147,7 +147,7 @@
                 </div>
                 <div class="col-md-6">
                   <label class="text-black" for="email">Email</label> 
-                  <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                 </div>
               </div>
 
@@ -155,8 +155,8 @@
                 <div class="col-md-12">
                   <label class="text-black" for="treatment">Service You Want</label> 
                   <select name="treatment" id="treatment" class="form-control">
-                    <option value="">Manicure</option>
-                    <option value="">Pedicure</option>
+                    <option value="Manicure">Manicure</option>
+                    <option value="Pedicure">Pedicure</option>
                   </select>
                 </div>
               </div>
@@ -164,7 +164,7 @@
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="note">Notes</label> 
-                  <textarea name="note" id="note" cols="30" rows="5" class="form-control" required placeholder="Service specificications....."></textarea>
+                  <textarea name="note" id="note" cols="30" rows="5" class="form-control" required placeholder="Service specificications.."></textarea>
                 </div>
               </div>
 
@@ -175,7 +175,7 @@
                 <%if(session.getAttribute("message")!=null){
                 	session.getAttribute("message_color");
                 	%>
-                <span style="color:${message_color}">${message}</span>
+                <b><span style="color:${message_color};padding-left:10px">${message}</span></b>
                
                 <% session.setAttribute("message",null);
                 session.setAttribute("message_color",null); }%>

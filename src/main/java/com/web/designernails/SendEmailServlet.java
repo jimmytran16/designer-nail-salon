@@ -38,16 +38,17 @@ public class SendEmailServlet extends HttpServlet{
 		email = request.getParameter("email");
 		treatment = request.getParameter("treatment");
 		msg = request.getParameter("note");
-		//get session
+		//get session	
 		sess = request.getSession();
 		Properties props = new Properties(); 		
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable","true");
 		props.put("mail.smtp.host", "smtp.gmail.com");		        
 		props.put("mail.smtp.port", "587");   
-		final String username= System.getenv("SENDER_USER"); //get system enviroment variables
+		final String username= System.getenv("SENDER_USER"); //Get system enviroment variables
 		final String password = System.getenv("SENDER_PASS");
-			Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication(){
 				return new PasswordAuthentication(username,password);
@@ -56,13 +57,14 @@ public class SendEmailServlet extends HttpServlet{
 		try {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(username));
+		
 			//send from
 			final String recipient = System.getenv("RECIPIENT_USER");
 			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(recipient));
 			MimeBodyPart textPart = new MimeBodyPart();
 			Multipart multipart = new MimeMultipart();
 			String final_Text ="Name: "+fname+"\nPhone Number: "+phone+"\nEmail: "+email+"\nTreatment:"
-				+treatment+"\nMessage: "+msg;
+					+treatment+"\nMessage: "+msg;
 			textPart.setText(final_Text);
 			message.setSubject("Customer Message: ");
 			multipart.addBodyPart(textPart);
@@ -82,7 +84,7 @@ public class SendEmailServlet extends HttpServlet{
 				response.sendRedirect("booking.jsp");
 			}
 			
-	}
+		}
 
 	
-}
+	}
