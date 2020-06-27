@@ -7,8 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BookingServlet
- */
+* Servlet implementation class BookingServlet
+* 
+* @author  Jimmy Tran 
+* @since   2019-12-23 
+*/
+
+
 public class BookingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +32,6 @@ public class BookingServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.getRequestDispatcher("booking.jsp").forward(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */

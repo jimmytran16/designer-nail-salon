@@ -5,7 +5,7 @@
   <head>
     <title>Bookings</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/jpg" href="images/favicon_img.jpg">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,700,900|Display+Playfair:200,300,400,700"> 
@@ -29,6 +29,15 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
+   	
+   	<style>
+   	    @media (max-width: 767px) {
+        .logo_img{
+          margin-left: 0!important;
+          
+        }
+      }
+   	</style>
   
   </head>
   <body>
@@ -86,8 +95,7 @@
                   </ul>
             </div>
 
-            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
+            <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>		
           </div>
 
         </div>
@@ -191,10 +199,10 @@
               <p class="mb-4">365A Main Street, Medford, Massachusetts, USA</p>
 
               <p class="mb-0 font-weight-bold">Phone</p>
-              <p class="mb-4"><a href="#">+1 (339) 221-5234</a></p>
+              <p class="mb-4"><a href="tel:3392215234">+1 (339) 221-5234</a></p>
 
               <p class="mb-0 font-weight-bold">Email Address</p>
-              <p class="mb-0"><a href="#">designersnailsalon@gmail.com</a></p>
+              <p class="mb-0"><a href="mailto:designersnailsalon@gmail.com">designersnailsalon@gmail.com</a></p>
 
             </div>
             

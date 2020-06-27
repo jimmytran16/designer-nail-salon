@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ServicesServlet
- */
+* Servlet implementation class ServicesServlet
+* 
+* @author  Jimmy Tran 
+* @since   2019-12-23 
+*/
 public class ServicesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,7 +28,8 @@ public class ServicesServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("services.html").forward(request, response);
+		/* Will get forward the dispatcher to the services page*/
+		request.getRequestDispatcher("services.html").forward(request, response); 
 	}
 
 	/**
@@ -33,6 +37,7 @@ public class ServicesServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		/* Will pass the request and response to the doGet() request handler function */
 		doGet(request, response);
 	}
 

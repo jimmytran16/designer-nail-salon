@@ -18,6 +18,13 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+/** 
+* Servlet class to carry out the email from sender to recipient
+* 
+* @author  Jimmy Tran 
+* @since   2019-12-23 
+*/
+
 public class SendEmailServlet extends HttpServlet{
 	/**
 	 * 
@@ -27,36 +34,46 @@ public class SendEmailServlet extends HttpServlet{
 	HttpSession sess;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		//call doPost method if form method is 'get'
+		/* Call the doPost method and pass in the request and response */
 		doPost(request,response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{	
+		/* Extract the inputs from the request object passed from client */
 		fname = request.getParameter("fname");
 		phone = request.getParameter("lname");
 		date = request.getParameter("date");
 		email = request.getParameter("email");
 		treatment = request.getParameter("treatment");
 		msg = request.getParameter("note");
-		//get session	
+		
+		/* Get the session instance */
 		sess = request.getSession();
 		Properties props = new Properties(); 		
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable","true");
 		props.put("mail.smtp.host", "smtp.gmail.com");		        
 		props.put("mail.smtp.port", "587");   
-		final String username= System.getenv("SENDER_USER"); //Get system enviroment variables
+		
+		/* Get the enviroment variables of the sender's email and password from host server */
+		final String username= System.getenv("SENDER_USER"); 
 		final String password = System.getenv("SENDER_PASS");
-
+			
+		 /** 
+		    * This method is used to authenticate the sender's email address 
+		    * @param props This is the first paramter that passes in the java mail server configurations 
+		    * @param new javax.mail.Authenticator()  This is the second parameter that passes in the instance of the java authenticator for the username and password
+		    * @return the PasswordAuthentication sesssion instance to the session if it is successful
+		    */
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-			@Override
-			protected PasswordAuthentication getPasswordAuthentication(){
-				return new PasswordAuthentication(username,password);
-			}			
-				});
+				@Override
+				protected PasswordAuthentication getPasswordAuthentication(){
+					return new PasswordAuthentication(username,password);
+				}			
+			});
 		try {
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(username));
+			message.setFrom(new InternetAddress(username)); /* Set the recipient username into the message form */
 		
 			//send from
 			final String recipient = System.getenv("RECIPIENT_USER");
