@@ -3,7 +3,8 @@ body {
   line-height: 1.7;
   color: black;
   font-weight: 300;
-  font-size: 1rem; }
+  font-size: 1rem; 
+  }
 
 ::-moz-selection {
   background: #000;
