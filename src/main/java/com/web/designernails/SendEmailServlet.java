@@ -50,13 +50,13 @@ public class SendEmailServlet extends HttpServlet {
         date = request.getParameter("date");
         email = request.getParameter("email");
         msg = request.getParameter("note");
-        appt = convertMilitaryToStandardTime(request.getParameter("appt"));
+        appt = convertMilitaryToStandardTime(String.valueOf(request.getParameter("appt")));
         
-        
+        /* validate the email */
         email = validateTheEmail(email);
         
         
-        /* Get the session instance */
+        /* Get the session instance and set properties */
         sess = request.getSession();
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -64,10 +64,11 @@ public class SendEmailServlet extends HttpServlet {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
-        /* Get the enviroment variables of the sender's email and password from host server */
+        /* Get the enviroment variables of the sender's email and password from host server, get recipeint's email */
         final String username = System.getenv("SENDER_USER");
         final String password = System.getenv("SENDER_PASS");
-            
+        final String recipient = System.getenv("RECIPIENT_USER");
+
         /** 
          * This method is used to authenticate the sender's email address 
          * @param props This is the first paramter that passes in the java mail server configurations 
@@ -86,18 +87,25 @@ public class SendEmailServlet extends HttpServlet {
             message.setFrom(new InternetAddress(username)); /* Set the recipient username into the message form */
 
 
-            //send from
-            final String recipient = System.getenv("RECIPIENT_USER");
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
             MimeBodyPart textPart = new MimeBodyPart();
+            textPart.setHeader("Content-Type", "text/html");
             Multipart multipart = new MimeMultipart();
-            String final_Text = "Name: " + fname + "\nPhone Number: " + phone + "\nEmail: " + email + "\nTime: " +
-                appt + "\nMessage: " + msg;
-            textPart.setText(final_Text);
-            message.setSubject("Customer Message: ");
+            
+            final String authKey = System.getenv("API_KEY");
+            final String apiURL= System.getenv("API_URL");
+            
+            final String messageParam = "Hi%20"+fname.split(" ")[0]+",%20this%20is%20Designer%20Nail%20Salon%20confirming%20your%20appointment%20for%20" +date+ "%20at%20" + appt; 
+            final String confirmationUrl = apiURL +"?key="+authKey+"&number="+phone+"&message=" + messageParam;
+            final String messageBody = "Name: " + fname + "\nPhone Number: " + phone + "\nEmail: " + email + "\nTime: " +
+                appt + "\nMessage: " + msg + "\nCONFIRM LINK: " + confirmationUrl;
+            
+            textPart.setText(messageBody);
             multipart.addBodyPart(textPart);
-            message.setContent(multipart);
+
             message.setSubject("Appointment Date: " + date);
+            message.setContent(multipart, "text/html");
+            message.saveChanges();
 
             //Send email 
             Transport.send(message);
@@ -119,43 +127,49 @@ public class SendEmailServlet extends HttpServlet {
     }
     // function to convert Military time to Standard time
     private String convertMilitaryToStandardTime(String time) {
-        // get the hour of the time
-        String splitTime[] = time.split(":");
-        int HOUR = Integer.valueOf(splitTime[0]);
+    	
+    	try {
+    		// get the hour of the time
+            String splitTime[] = time.split(":");
+            int HOUR = Integer.valueOf(splitTime[0]);
 
-        // check if the time is in military, if greater than 12, then it is a mil time
-        // give it the right standard time
-        if (HOUR > 12) {
-            String refineHour;
-            switch (HOUR) {
-                case 13:
-                    refineHour = "1";
-                    break;
-                case 14:
-                    refineHour = "2";
-                    break;
-                case 15:
-                    refineHour = "3";
-                    break;
-                case 16:
-                    refineHour = "4";
-                    break;
-                case 17:
-                    refineHour = "5";
-                    break;
-                case 18:
-                    refineHour = "6";
-                    break;
-                case 19:
-                    refineHour = "7";
-                    break;
-                default:
-                    refineHour = String.valueOf(HOUR);
-                    break;
+            // check if the time is in military, if greater than 12, then it is a mil time
+            // give it the right standard time
+            if (HOUR > 12) {
+                String refineHour;
+                switch (HOUR) {
+                    case 13:
+                        refineHour = "1";
+                        break;
+                    case 14:
+                        refineHour = "2";
+                        break;
+                    case 15:
+                        refineHour = "3";
+                        break;
+                    case 16:
+                        refineHour = "4";
+                        break;
+                    case 17:
+                        refineHour = "5";
+                        break;
+                    case 18:
+                        refineHour = "6";
+                        break;
+                    case 19:
+                        refineHour = "7";
+                        break;
+                    default:
+                        refineHour = String.valueOf(HOUR);
+                        break;
+                }
+                return new String(refineHour + ":" + splitTime[1] + "PM"); // return the standard time
             }
-            return new String(refineHour + ":" + splitTime[1] + "PM"); // return the standard time
-        }
-        return time  + ((HOUR==12) ? "PM" : "AM"); // return the time if the time is not military
+            return time  + ((HOUR==12) ? "PM" : "AM"); // return the time if the time is not military
+    	}catch(Exception e) {
+    		return "" + e;
+    	}
+    	
     }
 
 
