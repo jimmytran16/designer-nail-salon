@@ -18,6 +18,9 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import com.web.designernails.Token;
+import com.web.designernails.TokenService;
+
 /** 
  * Servlet class to carry out the email from sender to recipient
  * 
@@ -68,7 +71,8 @@ public class SendEmailServlet extends HttpServlet {
         final String username = System.getenv("SENDER_USER");
         final String password = System.getenv("SENDER_PASS");
         final String recipient = System.getenv("RECIPIENT_USER");
-
+     
+  
         /** 
          * This method is used to authenticate the sender's email address 
          * @param props This is the first paramter that passes in the java mail server configurations 
@@ -85,18 +89,20 @@ public class SendEmailServlet extends HttpServlet {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username)); /* Set the recipient username into the message form */
-
-
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipient));
             MimeBodyPart textPart = new MimeBodyPart();
             textPart.setHeader("Content-Type", "text/html");
             Multipart multipart = new MimeMultipart();
             
+            Token token = TokenService.requestForToken();
+            System.out.println(token);
             final String authKey = System.getenv("API_KEY");
+            final String confirmationToken = (token == null) ? "error getting token" : token.getAccessToken();
             final String apiURL= System.getenv("API_URL");
+//            final String apiURL = "http://127.0.0.1:5000/sendConfirmation";
             
             final String messageParam = "Hi%20"+fname.split(" ")[0]+",%20this%20is%20Designer%20Nail%20Salon%20confirming%20your%20appointment%20for%20" +date+ "%20at%20" + appt; 
-            final String confirmationUrl = apiURL +"?key="+authKey+"&number="+phone+"&message=" + messageParam;
+            final String confirmationUrl = apiURL +"?key="+confirmationToken+"&number="+phone+"&message=" + messageParam;
             final String messageBody = "Name: " + fname + "\nPhone Number: " + phone + "\nEmail: " + email + "\nTime: " +
                 appt + "\nMessage: " + msg + "\nCONFIRM LINK: " + confirmationUrl;
             
