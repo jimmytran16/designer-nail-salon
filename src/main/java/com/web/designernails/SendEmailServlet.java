@@ -72,7 +72,6 @@ public class SendEmailServlet extends HttpServlet {
         final String password = System.getenv("SENDER_PASS");
         final String recipient = System.getenv("RECIPIENT_USER");
         
-               
         /** 
          * This method is used to authenticate the sender's email address 
          * @param props This is the first parameter that passes in the java mail server configurations 
