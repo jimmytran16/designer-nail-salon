@@ -71,13 +71,13 @@ public class SendEmailServlet extends HttpServlet {
         final String username = System.getenv("SENDER_USER");
         final String password = System.getenv("SENDER_PASS");
         final String recipient = System.getenv("RECIPIENT_USER");
-     
-  
+        
+               
         /** 
          * This method is used to authenticate the sender's email address 
-         * @param props This is the first paramter that passes in the java mail server configurations 
+         * @param props This is the first parameter that passes in the java mail server configurations 
          * @param new javax.mail.Authenticator()  This is the second parameter that passes in the instance of the java authenticator for the username and password
-         * @return the PasswordAuthentication sesssion instance to the session if it is successful
+         * @return the PasswordAuthentication session instance to the session if it is successful
          */
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             @Override
@@ -100,8 +100,9 @@ public class SendEmailServlet extends HttpServlet {
             final String confirmationToken = (token == null) ? "error getting token" : token.getAccessToken();
             final String apiURL= System.getenv("API_URL");
 //            final String apiURL = "http://127.0.0.1:5000/sendConfirmation";
-            
-            final String messageParam = "Hi%20"+fname.split(" ")[0]+",%20this%20is%20Designer%20Nail%20Salon%20confirming%20your%20appointment%20for%20" +date+ "%20at%20" + appt; 
+           
+            final String contactMessage = "%0A%0APlease%20Contact%20(339)-221-5234%20if%20you%20have%20any%20questions%20or%20would%20like%20to%20cancel%20your%20appointment!%20See%20you%20soon!%20";
+            final String messageParam = "Hi%20"+fname.split(" ")[0]+",%20this%20is%20Designer%20Nail%20Salon%20confirming%20your%20appointment%20for%20" +date+ "%20at%20" + appt + contactMessage; 
             final String confirmationUrl = apiURL +"?key="+confirmationToken+"&number="+phone+"&message=" + messageParam;
             final String messageBody = "Name: " + fname + "\nPhone Number: " + phone + "\nEmail: " + email + "\nTime: " +
                 appt + "\nMessage: " + msg + "\nCONFIRM LINK: " + confirmationUrl;
@@ -127,10 +128,12 @@ public class SendEmailServlet extends HttpServlet {
         }
 
     }
+    
     // check if the email is empty, then return back "empty" string
     private String validateTheEmail(String email) {
     	return email.isEmpty() ? "N/A" : email;
     }
+    
     // function to convert Military time to Standard time
     private String convertMilitaryToStandardTime(String time) {
     	
