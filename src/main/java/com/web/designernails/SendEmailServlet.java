@@ -93,13 +93,12 @@ public class SendEmailServlet extends HttpServlet {
             textPart.setHeader("Content-Type", "text/html");
             Multipart multipart = new MimeMultipart();
             
-            Token token = TokenService.requestForToken();
-            System.out.println(token);
-            final String authKey = System.getenv("API_KEY");
-            final String confirmationToken = (token == null) ? "error getting token" : token.getAccessToken();
+            final String apiKey = System.getenv("API_KEY");
             final String apiURL= System.getenv("API_URL");
+            Token token = TokenService.requestForToken(apiKey);
+            final String confirmationToken = (token == null) ? "error getting token" : token.getAccessToken();
+
 //            final String apiURL = "http://127.0.0.1:5000/sendConfirmation";
-           
             final String contactMessage = "%0A%0APlease%20Contact%20(339)-221-5234%20if%20you%20have%20any%20questions%20or%20would%20like%20to%20cancel%20your%20appointment!%20See%20you%20soon!%20";
             final String messageParam = "Hi%20"+fname.split(" ")[0]+",%20this%20is%20Designer%20Nail%20Salon%20confirming%20your%20appointment%20for%20" +date+ "%20at%20" + appt + contactMessage; 
             final String confirmationUrl = apiURL +"?key="+confirmationToken+"&number="+phone+"&message=" + messageParam;

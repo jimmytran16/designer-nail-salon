@@ -11,11 +11,12 @@ import com.web.designernails.Token;
 
 
 public class TokenService {
-	public static Token requestForToken() {
+	public static Token requestForToken(String apiKey) {
 		try {
 			  String getTokenUrl = System.getenv("GET_TOKEN_URL");
-	          URL url = new URL(getTokenUrl);
-//	          URL url = new URL("http://localhost:5000/getToken");
+
+	          URL url = new URL(getTokenUrl + "?apiKey=" + apiKey);
+//	          URL url = new URL("http://localhost:5000/getToken?apiKey=" + apiKey);
 	          HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 	          conn.setRequestMethod("GET");
 	          conn.setRequestProperty("Accept", "application/json");
