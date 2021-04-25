@@ -57,7 +57,7 @@ public class SendEmailServlet extends HttpServlet {
         
         /* validate the email */
         email = validateTheEmail(email);
-        
+        phone = validateThePhoneNumber(phone);
         
         /* Get the session instance and set properties */
         sess = request.getSession();
@@ -130,6 +130,12 @@ public class SendEmailServlet extends HttpServlet {
     // check if the email is empty, then return back "empty" string
     private String validateTheEmail(String email) {
     	return email.isEmpty() ? "N/A" : email;
+    }
+    
+    // take away all non numerical characters within the phoneNumber string and return the refined phone number string
+    private String validateThePhoneNumber(String phoneNumber) {
+    	String phoneNumberRefined = phoneNumber.replaceAll("[^0-9]", "");
+    	return phoneNumberRefined;
     }
     
     // function to convert Military time to Standard time
