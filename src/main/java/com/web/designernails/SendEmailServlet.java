@@ -39,6 +39,7 @@ public class SendEmailServlet extends HttpServlet {
     private String email;
     private String msg;
     private String appt;
+    private Validations validation = new Validations();
     HttpSession sess;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -129,13 +130,12 @@ public class SendEmailServlet extends HttpServlet {
     
     // check if the email is empty, then return back "empty" string
     private String validateTheEmail(String email) {
-    	return email.isEmpty() ? "N/A" : email;
+    	return validation.validateTheEmail(email);
     }
     
     // take away all non numerical characters within the phoneNumber string and return the refined phone number string
     private String validateThePhoneNumber(String phoneNumber) {
-    	String phoneNumberRefined = phoneNumber.replaceAll("[^0-9]", "");
-    	return phoneNumberRefined;
+    	return validation.validateThePhoneNumber(phoneNumber);
     }
     
     // function to convert Military time to Standard time
