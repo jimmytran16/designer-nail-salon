@@ -7,11 +7,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 
 import com.google.gson.Gson;
-import com.web.designernails.Token;
+import com.web.designernails.Domain.Token;
 
 
 public class TokenService {
-	public static Token requestForToken(String apiKey) {
+	public Token requestForToken(String apiKey) {
 		try {
 			  String getTokenUrl = System.getenv("GET_TOKEN_URL");
 
@@ -39,8 +39,6 @@ public class TokenService {
 	          
 	          Gson gson = new Gson();
 	          Token token = gson.fromJson(data, Token.class);
-//	          System.out.println(token.success);
-//	          System.out.println(token.accessToken);
 	          
 	          conn.disconnect();
 	          

@@ -1,10 +1,10 @@
 package com.web.designernails;
 
+import com.web.designernails.Services.SendEmailService;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-
-import com.web.designernails.Validations;
 
 /**
  * Unit test for simple App.
@@ -12,7 +12,7 @@ import com.web.designernails.Validations;
 public class AppTest 
     extends TestCase{
 	
-	private Validations validations = new Validations();
+	private SendEmailService _sendEmailService = new SendEmailService();
 	
     /**
      * Create the test case
@@ -37,9 +37,9 @@ public class AppTest
      * Rigourous Test :-)
      */
     public void testPhoneValidationWithCorrectResultingStringLength(){
-    	String refinedPhoneNumber1 = validations.validateThePhoneNumber("781 111 1111");
-    	String refinedPhoneNumber2 = validations.validateThePhoneNumber("781-111-1111");
-    	String refinedPhoneNumber3 = validations.validateThePhoneNumber("!@#!#@!781/111/1111");
+    	String refinedPhoneNumber1 = _sendEmailService.validateThePhoneNumber("781 111 1111");
+    	String refinedPhoneNumber2 = _sendEmailService.validateThePhoneNumber("781-111-1111");
+    	String refinedPhoneNumber3 = _sendEmailService.validateThePhoneNumber("!@#!#@!781/111/1111");
 
         assertEquals(10,refinedPhoneNumber1.length());
         assertEquals(10,refinedPhoneNumber2.length());
@@ -47,8 +47,8 @@ public class AppTest
     }
     
     public void testEmailValidation() {
-    	String email1 = validations.validateTheEmail("");
-    	String email2 = validations.validateTheEmail("j@gmail.com");
+    	String email1 = _sendEmailService.validateTheEmail("");
+    	String email2 = _sendEmailService.validateTheEmail("j@gmail.com");
     	
     	assertEquals("N/A",email1);
     	assertEquals("j@gmail.com",email2);

@@ -10,7 +10,7 @@
   </welcome-file-list>
   <servlet>
     <servlet-name>EmailSend</servlet-name>
-    <servlet-class>com.web.designernails.SendEmailServlet</servlet-class>
+    <servlet-class>com.web.designernails.Servlets.SendEmailServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>EmailSend</servlet-name>
@@ -18,7 +18,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>ServicesServlet</servlet-name>
-    <servlet-class>com.web.designernails.ServicesServlet</servlet-class>
+    <servlet-class>com.web.designernails.Servlets.ServicesServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ServicesServlet</servlet-name>
@@ -26,7 +26,7 @@
   </servlet-mapping>
   <servlet>
     <servlet-name>BookingServlet</servlet-name>
-    <servlet-class>com.web.designernails.BookingServlet</servlet-class>
+    <servlet-class>com.web.designernails.Servlets.BookingServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>BookingServlet</servlet-name>

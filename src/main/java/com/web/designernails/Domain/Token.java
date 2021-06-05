@@ -1,7 +1,10 @@
-package com.web.designernails;
+package com.web.designernails.Domain;
 
 /* Token class for storing data that we get from the Confirmation API */
-class Token {
+public class Token {
+
+	public Token(){}
+	
 	private String success;
 	private String accessToken;
 	
