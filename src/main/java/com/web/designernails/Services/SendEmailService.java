@@ -4,7 +4,6 @@ import com.web.designernails.TokenService;
 import com.web.designernails.Domain.Email;
 import com.web.designernails.Domain.Token;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.mail.Message;
 import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
@@ -21,7 +20,6 @@ import java.util.Properties;
  * */ 
 public class SendEmailService implements ISendEmailService {
     
-    private HttpSession sess;
     private TokenService _tokenService = new TokenService();
 
     /* Get the enviroment variables of the sender's email and password from host server, get recipeint's email */
@@ -32,7 +30,7 @@ public class SendEmailService implements ISendEmailService {
     /* Get the api key and the api key endpoint from the environment */
     private final String apiKey = System.getenv("API_KEY");
     private final String apiURL = System.getenv("API_URL");
-
+    
     /*
      * function to send out the email
      * @params email - the email instance that contains all of the email information 
@@ -82,6 +80,7 @@ public class SendEmailService implements ISendEmailService {
             final String messageBody = "Name: " + email.name + "\nPhone Number: " + email.phone + "\nEmail: " + email.email + "\nTime: " +
             email.appointment + "\nMessage: " + email.message + "\nCONFIRM LINK: " + confirmationUrl;
             
+            System.out.println("Confirmation URL: " + confirmationUrl);
             // set text and add body part
             textPart.setText(messageBody);
             multipart.addBodyPart(textPart);

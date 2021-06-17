@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.web.designernails.Domain.Email;
+import com.web.designernails.Interfaces.ISendEmailService;
 import com.web.designernails.Util.Conversions;
 import com.web.designernails.Services.SendEmailService;
 
@@ -28,7 +29,7 @@ public class SendEmailServlet extends HttpServlet {
     private String email;
     private String msg;
     private String appt;
-    private SendEmailService _sendEmailService = new SendEmailService();
+    private ISendEmailService _sendEmailService = new SendEmailService();
     HttpSession sess;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

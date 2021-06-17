@@ -5,7 +5,10 @@ public class Conversions {
       public static String convertMilitaryToStandardTime(String time) {
     	
     	try {
-    		// get the hour of the time
+            // reformat the date to respective 
+            time = cleanUpDateToCorrectFormat(time);
+            System.out.println("The time " + time);
+            // get the hour of the time
             String splitTime[] = time.split(":");
             int HOUR = Integer.valueOf(splitTime[0]);
 
@@ -45,5 +48,10 @@ public class Conversions {
     	}catch(Exception e) {
     		return "" + e;
     	}   	
+    }
+
+    // 
+    private static String cleanUpDateToCorrectFormat(String date) {
+        return date.split(" ")[0];
     }
 }
