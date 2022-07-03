@@ -55,11 +55,8 @@ public class SendEmailServlet extends HttpServlet {
 
         /* create an email instane to pass into the send email service service */
         Email emailInstance = new Email(fname,phone,date,email,msg,appt);
-
         try {
             _sendEmailService.sendOutAppointmentInfoToEmail(emailInstance);
-
-            System.out.println("Success! - port 587");
             sess.setAttribute("message", "  Appointment sent succuessfully! You will get a comfirmation text/call very soon."); //success message sent to the webpage
             sess.setAttribute("message_color", "#c7b216");
             response.sendRedirect("booking.jsp");
