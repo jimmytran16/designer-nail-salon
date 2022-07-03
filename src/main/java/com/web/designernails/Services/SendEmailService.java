@@ -23,12 +23,9 @@ public class SendEmailService implements ISendEmailService {
     private ConfirmationService _confirmationService = new ConfirmationService();
 
     /* Get the api key and the api key endpoint from the environment */
-    //private final String apiKey = System.getenv("API_KEY");
-    //private final String apiURL = System.getenv("API_URL");
-    
-    private final String apiKey = "ea3c6af817d44d4e86fa3dc9de1f8edc";
-    private final String apiURL = "https://whispering-ridge-21763.herokuapp.com/sendConfirmation";
-    /*
+    private final String apiKey = System.getenv("API_KEY");
+    private final String apiURL = System.getenv("API_URL");
+        /*
      * function to send out the email
      * @params email - the email instance that contains all of the email information 
     */

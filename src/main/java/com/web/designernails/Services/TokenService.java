@@ -17,11 +17,9 @@ public class TokenService implements IGetTokenService {
 	@Override
 	public Token requestForToken(String apiKey) {
 		try {
-			// String getTokenUrl = System.getenv("GET_TOKEN_URL");
-			String getTokenUrl = "http://localhost:5000/getToken";
+		    String getTokenUrl = System.getenv("GET_TOKEN_URL");
 
 			URL url = new URL(getTokenUrl + "?apiKey=" + apiKey);
-			//URL url = new URL(getTokenUrl);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
 			conn.setRequestMethod("GET");
