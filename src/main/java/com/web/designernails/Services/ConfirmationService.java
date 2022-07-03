@@ -25,9 +25,9 @@ public class ConfirmationService implements IConfirmationService{
         	// Create JSON from email object
             Gson gson = new Gson();
             String requestJSON = gson.toJson(email);
-            
+            String apiURL = System.getenv("API_URL");
         	//Create connection
-            URL url = new URL("http://localhost:5000/sendAppointmentInfo");
+            URL url = new URL(apiURL);
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("POST");
             connection.setRequestProperty("Content-Type", "application/json");
