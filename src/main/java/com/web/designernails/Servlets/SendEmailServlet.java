@@ -55,6 +55,7 @@ public class SendEmailServlet extends HttpServlet {
 
         /* create an email instane to pass into the send email service service */
         Email emailInstance = new Email(fname,phone,date,email,msg,appt);
+        System.out.println(emailInstance.toString());
 
         try {
             _sendEmailService.sendOutAppointmentInfoToEmail(emailInstance);
