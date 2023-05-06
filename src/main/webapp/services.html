@@ -19,10 +19,24 @@
       <link rel="stylesheet" href="css/aos.css">
       <link rel="stylesheet" href="css/style.css">
       <style>
-         @media (max-width: 767px) {
-         .logo_img{
-         margin-left: 0!important;
+         .priceMenu-container {
+            display: flex; 
+            flex-direction: row;
          }
+         .priceMenu-mani, .priceMenu-pedi {
+            width: 49%; 
+            padding: 10px;
+         }
+         @media (max-width: 767px) {
+            .logo_img{
+               margin-left: 0!important;
+            }
+            .priceMenu-container {
+               flex-direction: column;
+            }
+            .priceMenu-mani, .priceMenu-pedi {
+               width: 100%;
+            }
          }
       </style>
    </head>
@@ -89,32 +103,35 @@
          </div>
          <div id="priceMenu"class="site-section">
             <div class="container">
-               <div class="row">
-                  <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
-                     <div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
+               <div class="priceMenu-container">
+                  <div class="priceMenu-mani">
+                     <div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7" style="text-align: center;">
                         <span ><i><img class="icon_price" src="images/manicure.png" height="60px" width="60px" alt=""></i></span><br><br>
                         <h3 >Manicure</h3>
-                        <p>Regular Manicure <strong class="font-weight-bold text-primary"> $15</strong></p>
-                        <p>Regular Manicure+Pedicure <strong class="font-weight-bold text-primary"> $44</strong></p>
-                        <p>French Manicure <strong class="font-weight-bold text-primary"> $20</strong></p>
-                        <p>Spa Manicure <strong class="font-weight-bold text-primary"> $20</strong></p>
-                        <p>Gel Manicure <strong class="font-weight-bold text-primary"> $30</strong></p>
+                        <p>Regular Manicure <strong class="font-weight-bold text-primary"> $20</strong></p>
+                        <p>Regular Manicure+Pedicure <strong class="font-weight-bold text-primary"> $55</strong></p>
+                        <!-- <p>French Manicure <strong class="font-weight-bold text-primary"> $20</strong></p> -->
+                        <!-- <p>Spa Manicure <strong class="font-weight-bold text-primary"> $20</strong></p> -->
+                        <p>Gel Manicure <strong class="font-weight-bold text-primary"> $35</strong></p>
+                        <p>Gel manicure and regular pedicure <strong class="font-weight-bold text-primary"> $70</strong></p>
+                        <p>Gel Manicure+Pedicure <strong class="font-weight-bold text-primary"> $85</strong></p>
                         <p>Polish Change-Hands <strong class="font-weight-bold text-primary"> $10+</strong></p>
-                        <p>French Manicre-Feet <strong class="font-weight-bold text-primary"> $15</strong></p>
+                        <!-- <p>French Manicure-Feet <strong class="font-weight-bold text-primary"> $15</strong></p> -->
                         <p>Nail Design <strong class="font-weight-bold text-primary"> $5</strong></p>
-                        <p>Dip Powder <strong class="font-weight-bold text-primary"> $40+</strong></p>
+                        <p>Dip Powder <strong class="font-weight-bold text-primary"> $45+</strong></p>
+                        <p>Dip Powder with extensions<strong class="font-weight-bold text-primary"> $50+</strong></p>
                      </div>
                   </div>
-                  <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
-                     <div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
+                  <div class="priceMenu-pedi">
+                     <div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7" style="text-align: center;">
                         <span ><i><img src="images/pedicure.png" height="60px" width="60px" alt=""></i></span><br><br>
                         <h3 >Pedicure</h3>
                         <br>
-                        <p>Regular Pedicure <strong class="font-weight-bold text-primary"> $29</strong></p>
-                        <p>Spa Pedicure <strong class="font-weight-bold text-primary"> $40</strong></p>
+                        <p>Regular Pedicure <strong class="font-weight-bold text-primary"> $35</strong></p>
+                        <p>Spa Pedicure <strong class="font-weight-bold text-primary"> $50</strong></p>
                      </div>
                   </div>
-                  <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
+                  <!-- <div class="col-md-6 col-lg-4 text-center mb-5 mb-lg-5">
                      <div class="h-100 p-4 p-lg-5 bg-light site-block-feature-7">
                         <span ><i><img src="images/arcylic.png" height="60px" width="60px" alt=""></i></span><br><br>
                         <h3>Arcryics</h3>
@@ -126,7 +143,7 @@
                         <p>Pink and White Fill<strong class="font-weight-bold text-primary"> $40</strong></p>
                         <p>Nail Repair <strong class="font-weight-bold text-primary"> $3+</strong></p>
                      </div>
-                  </div>
+                  </div> -->
                </div>
             </div>
          </div>
