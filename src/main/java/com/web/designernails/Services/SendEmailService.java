@@ -39,7 +39,7 @@ public class SendEmailService implements ISendEmailService {
             final String confirmationToken = (token == null) ? "error getting token" : token.getAccessToken();
             
             // final String apiURL = "http://127.0.0.1:5000/sendConfirmation";
-            final String contactMessage = "%0A%0APlease%20Contact%20(339)-221-5234%20if%20you%20have%20any%20questions%20or%20would%20like%20to%20cancel%20your%20appointment!%20See%20you%20soon!%20";
+            final String contactMessage = "%0A%0APlease%20Contact%20(781)-475-8079%20if%20you%20have%20any%20questions%20or%20would%20like%20to%20cancel%20your%20appointment!%20See%20you%20soon!%20";
             final String messageParam = "Hi%20"+email.name.split(" ")[0]+",%20this%20is%20Designer%20Nail%20Salon%20confirming%20your%20appointment%20for%20" +email.date+ "%20at%20" + email.appointment + contactMessage; 
             final String confirmationUrl = apiURL +"?key="+confirmationToken+"&number="+email.phone+"&message=" + messageParam;
             final String messageBody = "Name: " + email.name + "\nPhone Number: " + email.phone + "\nEmail: " + email.email + "\nTime: " +

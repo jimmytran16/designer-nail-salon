@@ -155,7 +155,7 @@
                         <p class="mb-0 font-weight-bold">Address</p>
                         <p class="mb-4">365A Main Street, Medford, Massachusetts, USA</p>
                         <p class="mb-0 font-weight-bold">Phone</p>
-                        <p class="mb-4"><a href="tel:3392215234">+1 (339) 221-5234</a></p>
+                        <p class="mb-4"><a href="tel:7814758079">+1 (781) 475-8079</a></p>
                         <p class="mb-0 font-weight-bold">Email Address</p>
                         <p class="mb-0"><a href="mailto:designersnailsalon@gmail.com">designersnailsalon@gmail.com</a></p>
                      </div>
