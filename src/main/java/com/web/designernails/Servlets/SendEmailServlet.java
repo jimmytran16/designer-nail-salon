@@ -57,11 +57,11 @@ public class SendEmailServlet extends HttpServlet {
         Email emailInstance = new Email(fname,phone,date,email,msg,appt);
         try {
             _sendEmailService.sendOutAppointmentInfoToEmail(emailInstance);
+            sess.setAttribute("message", "  Appointment sent succuessfully! You will get a comfirmation text/call very soon."); //success message sent to the webpage
+            sess.setAttribute("message_color", "#c7b216");
             // NOTE: Currently there is an issue with Twilio, so will notify user to call salon
-            // sess.setAttribute("message", "  Appointment sent succuessfully! You will get a comfirmation text/call very soon."); //success message sent to the webpage
-            // sess.setAttribute("message_color", "#c7b216");
-            sess.setAttribute("message", "  Sorry, our website is currently under maintenance, Please contact (339)-221-5234 to schedule for an appointment!");
-            sess.setAttribute("message_color", "red");
+            // sess.setAttribute("message", "  Sorry, our website is currently under maintenance, Please contact (339)-221-5234 to schedule for an appointment!");
+            // sess.setAttribute("message_color", "red");
             response.sendRedirect("booking.jsp");
         } catch (Exception e) {
             sess.setAttribute("message_color", "red");
