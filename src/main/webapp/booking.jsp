@@ -62,7 +62,7 @@
                            <li>
                               <a href="index.html">Home</a>
                            </li>
-                           <!-- <li><a href="#">Book Online</a></li> -->
+                           <li><a href="#">Book Online</a></li>
                            <li><a href="services">Services</a></li>
                            <li><a href="services">Reviews</a></li>
                         </ul>
