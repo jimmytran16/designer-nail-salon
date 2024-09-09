@@ -87,9 +87,9 @@
                </div>
             </div>
          </header>
-       <div style="height:100vh; margin-top:20px;padding:10px;">
+      <%-- <div style="height:100vh; margin-top:20px;padding:10px;">
      		<iframe style="height:100%;" src="https://dns-booking-a546b019e183.herokuapp.com"></iframe>
-       	</div>
+       	</div> --%> 
       </div>
       <script src="js/jquery-3.3.1.min.js"></script>
       <script src="js/jquery-migrate-3.0.1.min.js"></script>
