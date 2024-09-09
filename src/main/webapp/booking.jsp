@@ -138,7 +138,7 @@
                            </div>
                         </div>
                         <div class="row form-group">
-                           <div class="col-md-12">
+                           <div class="col-md-12" id="confirmMessage">
                               <input type="submit" value="Send" class="btn btn-primary py-2 px-4 text-white">
                            </div>
                            <%if(session.getAttribute("message")!=null){
@@ -206,5 +206,10 @@
       <script src="js/bootstrap-datepicker.min.js"></script>
       <script src="js/aos.js"></script>
       <script src="js/main.js"></script>
+      <script type="application/javascript">
+         console.log('yooooo');
+         var confirmElemenet = document.getElementById('confirmMessage');
+         var topPos = confirmElemenet.offsetTop;
+      </script>
    </body>
 </html>
