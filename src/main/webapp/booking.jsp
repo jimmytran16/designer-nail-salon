@@ -3,6 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PTVGDMLHE"></script>
+      <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+   
+      gtag('config', 'G-8PTVGDMLHE');
+      </script>
       <title>Bookings</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,14 +48,6 @@
          }
       </style>
    </head>
-   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8PTVGDMLHE"></script>
-   <script>
-   window.dataLayer = window.dataLayer || [];
-   function gtag(){dataLayer.push(arguments);}
-   gtag('js', new Date());
-
-   gtag('config', 'G-8PTVGDMLHE');
-   </script>
    <body>
       <div class="site-wrap">
          <div class="site-mobile-menu">
