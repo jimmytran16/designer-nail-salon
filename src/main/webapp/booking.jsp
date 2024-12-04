@@ -86,7 +86,7 @@
                               <a href="https://www.yelp.com/biz/designer-nail-salon-medford-2" class="pl-3 pr-3 text-black"><span class="icon-yelp"></span></a>
                            </li>
                            <li>
-                              <a href="#" class="pl-3 pr-3 text-black"><span class="icon-instagram"></span></a>
+                              <a href="https://www.instagram.com/designernailsalonmedford" target="_blank" class="pl-3 pr-3 text-black"><span class="icon-instagram"></span></a>
                            </li>
                         </ul>
                      </div>
@@ -192,7 +192,7 @@
                   <div class="col-md-12">
                      <div class="mb-5">
                         <a href="https://www.facebook.com/DesignerNailMedford" target="_blank" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                        <a href="https://www.instagram.com/designernailsalonmedford" target="_blank" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
                         <a href="https://www.yelp.com/biz/designer-nail-salon-medford-2" target="_blank" class="pl-3 pr-3"><span class="icon-yelp"></span></a>
                      </div>
                      <p>
